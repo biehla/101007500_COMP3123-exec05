@@ -27,8 +27,8 @@ router.get('/profile', (req,res) => {
 
 router.get('/login/:uname/:passwd', async (req,res) => {
   
-  const json = await fs.open(__dirname + "/user.json", 'r')
-  const obj = JSON.parse(await json.readFile())
+  const json = await fs.readFile(__dirname + "/user.json")
+  const obj = JSON.parse(json)
   let retObj = {}
 
   if (obj.username === req.params.uname &&
